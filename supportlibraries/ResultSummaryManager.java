@@ -96,7 +96,6 @@ public abstract class ResultSummaryManager
 	{
 		summaryReport.addResultSummaryHeading(reportSettings.getProjectName() +
 											" - " +	" Automation Execution Result Summary");
-		addUsername(properties.getProperty("RemoteUrl"));
 		summaryReport.addResultSummarySubHeading("Module",
 								": " + properties.getProperty("RunConfiguration"),
 								"Operating System", ": Android" );
@@ -144,21 +143,5 @@ public abstract class ResultSummaryManager
 	    	
 	 }
 	
-	protected void addUsername(String remoteUrl)
-	{
-		if(remoteUrl.contentEquals("http://tamaghnaroy2:WAVxPxKew82aqe4yeo6a@hub.browserstack.com/wd/hub"))
-    	{
-			summaryReport.addResultSummarySubHeading("Date & Time",
-					": " + Util.getCurrentFormattedTime(properties.getProperty("DateFormatString")),
-					"User", ": " + "Tamaghna Roy");
-    	}
-    	else if(remoteUrl.contentEquals("http://priyathakur2:6WpqfsiJynbz8kNoCpzJ@hub.browserstack.com/wd/hub"))
-    	{
-    		summaryReport.addResultSummarySubHeading("Date & Time",
-					": " + Util.getCurrentFormattedTime(properties.getProperty("DateFormatString")),
-					"User", ": " + "Priya Thakur");
-    	}
-
-	}
-	 
+	
 }

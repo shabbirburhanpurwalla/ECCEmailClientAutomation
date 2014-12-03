@@ -17,7 +17,6 @@ import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.WebDriver;
 import java.lang.reflect.*;
 import java.net.MalformedURLException;
 

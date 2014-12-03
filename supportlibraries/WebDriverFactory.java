@@ -219,18 +219,35 @@ public class WebDriverFactory
 		return new RemoteWebDriver(url, desiredCapabilities);
 	}
 	
-	public static AppiumDriver getDriver(String remoteUrl, String emailClient, ScreenOrientation orientation) 
-	{	
+	public static AppiumDriver getDriver(String remoteUrl, String emailClient, ScreenOrientation orientation){	
+		AppiumDriver driver=null;
 		DesiredCapabilities capabilities=new DesiredCapabilities();
         //dc.setCapability("browserName", "Chrome");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "Android");
         
+        if(emailClient.toLowerCase().equals("aol")){
+        	capabilities.setCapability("appPackage","com.aol.mobile.aolapp");        
+            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        }else if(emailClient.toLowerCase().equals("gmail")){
+        	capabilities.setCapability("appPackage","com.google.android.gm");        
+            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        }else if(emailClient.toLowerCase().equals("outlook")){
+        	capabilities.setCapability("appPackage","com.outlook.Z7");        
+        	
+            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        }else if(emailClient.toLowerCase().equals("yahoo")){
+        	capabilities.setCapability("appPackage","com.yahoo.mobile.client.android.mail");        
+            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        }else{
+        	capabilities.setCapability("appPackage","com.android.email");        
+            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+            
+        }
+        
         //Email App
-        capabilities.setCapability("appPackage","com.android.email");        
-        //capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
-        capabilities.setCapability("appActivity", "com.android.email.activity.setup.AccountSetupBasics");
-        AppiumDriver driver=null;
+        //capabilities.setCapability("appActivity", "com.android.email.activity.setup.AccountSetupBasics");
+        
         try{
         	 driver = new AppiumDriver(new URL(remoteUrl),capabilities);
         	 driver.rotate(orientation);
