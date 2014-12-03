@@ -42,7 +42,8 @@ public abstract class ReusableLibrary
 	 */
 	protected FrameworkParameters frameworkParameters;
 	
-	
+	protected GlobalVariables variables;
+		
 	/**
 	 * Constructor to initialize the {@link ScriptHelper} object and in turn the objects wrapped by it
 	 * @param scriptHelper The {@link ScriptHelper} object
@@ -54,6 +55,7 @@ public abstract class ReusableLibrary
 		this.dataTable = scriptHelper.getDataTable();
 		this.report = scriptHelper.getReport();
 		this.driver = scriptHelper.getDriver();
+		this.variables = scriptHelper.getGlobalVariables();
 		
 		properties = Settings.getInstance();
 		frameworkParameters = FrameworkParameters.getInstance();

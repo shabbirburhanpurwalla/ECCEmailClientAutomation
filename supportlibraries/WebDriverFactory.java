@@ -9,6 +9,7 @@ import java.util.Properties;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.Proxy.ProxyType;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -218,7 +219,7 @@ public class WebDriverFactory
 		return new RemoteWebDriver(url, desiredCapabilities);
 	}
 	
-	public static AppiumDriver getDriver(String remoteUrl) 
+	public static AppiumDriver getDriver(String remoteUrl, String emailClient, ScreenOrientation orientation) 
 	{	
 		DesiredCapabilities capabilities=new DesiredCapabilities();
         //dc.setCapability("browserName", "Chrome");
@@ -232,6 +233,7 @@ public class WebDriverFactory
         AppiumDriver driver=null;
         try{
         	 driver = new AppiumDriver(new URL(remoteUrl),capabilities);
+        	 driver.rotate(orientation);
         }catch(Exception e){
         	System.out.println(e.getMessage());
         }

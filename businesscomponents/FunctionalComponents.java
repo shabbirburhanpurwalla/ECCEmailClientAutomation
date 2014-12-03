@@ -11,6 +11,7 @@ import com.cognizant.framework.Status;
 import componentgroups.CommonFunctions;
 import supportlibraries.ReusableLibrary;
 import supportlibraries.ScriptHelper;
+import supportlibraries.SeleniumTestParameters;
 import pageobjects.*;
 
 /**
@@ -52,6 +53,7 @@ public class FunctionalComponents extends ReusableLibrary
 		//Thread.sleep(2000);
 		int timeout = 10;
 		
+		System.out.println("Variables:" + variables.getEmailClient());
 		if(commonFunction.waitForElementVisibility(PageObjects.lbl_LastUpdated.getProperty(),timeout))
 			report.updateTestLog("Invoke Email Application","Email application invoked successfully.", Status.PASS);
 		else{

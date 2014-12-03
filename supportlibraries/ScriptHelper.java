@@ -16,6 +16,7 @@ public class ScriptHelper
 	private final CraftDataTable dataTable;
 	private final SeleniumReport report;
 	private final AppiumDriver driver;
+	private final GlobalVariables variable;
 	
 	/**
 	 * Constructor to initialize all the objects wrapped by the {@link ScriptHelper} class
@@ -23,11 +24,12 @@ public class ScriptHelper
 	 * @param report The {@link SeleniumReport} object
 	 * @param driver The {@link WebDriver} object
 	 */
-	public ScriptHelper(CraftDataTable dataTable, SeleniumReport report, AppiumDriver driver)
+	public ScriptHelper(CraftDataTable dataTable, SeleniumReport report, AppiumDriver driver, GlobalVariables variable)
 	{
 		this.dataTable = dataTable;
 		this.report = report;
 		this.driver = driver;
+		this.variable = variable;
 	}
 	
 	/**
@@ -55,5 +57,10 @@ public class ScriptHelper
 	public AppiumDriver getDriver()
 	{
 		return driver;
+	}
+	
+	public GlobalVariables getGlobalVariables()
+	{
+		return variable;
 	}
 }

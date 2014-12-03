@@ -16,6 +16,7 @@ import com.cognizant.framework.ReportThemeFactory.Theme;
 import org.apache.commons.io.FileUtils;
 import org.testng.Assert;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebDriver;
 import java.lang.reflect.*;
 import java.net.MalformedURLException;
@@ -38,6 +39,7 @@ public class DriverScript
 	private SeleniumReport report;
 	private AppiumDriver driver;
 	private ScriptHelper scriptHelper;
+	private GlobalVariables variable;
 	
 	private Properties properties;
 	private ExecutionMode executionMode;
@@ -93,7 +95,8 @@ public class DriverScript
 	{
 		startUp();
 		initializeTestIterations();
-		initializeWebDriver();
+		initializeGlobalVariables();
+		initializeWebDriver();		
 		initializeTestReport();
 		initializeDatatable();
 		initializeTestScript();
@@ -122,7 +125,10 @@ public class DriverScript
 	}
 	
 	private void setDefaultTestParameters()
-	{
+	{	
+		//System.out.println(testParameters.getEmailClient());
+	
+		
 		if (testParameters.getIterationMode() == null) {
 			testParameters.setIterationMode(IterationOptions.RunAllIterations);
 		}
@@ -181,7 +187,11 @@ public class DriverScript
 			break;
 			
 		case Remote:
-			driver = WebDriverFactory.getDriver(properties.getProperty("RemoteUrl"));
+			//System.out.println(testParameters.getEmailClient());
+			variable.setEmailClient(testParameters.getEmailClient());
+			driver = WebDriverFactory.getDriver(properties.getProperty("RemoteUrl"),testParameters.getEmailClient(),
+					ScreenOrientation.valueOf(testParameters.getOrientation()));
+			
 			break;
 			
 		case Grid:
@@ -285,6 +295,9 @@ public class DriverScript
 		report.addTestLogTableHeadings();
 	}
 	
+	private void initializeGlobalVariables(){
+		variable = new GlobalVariables();
+	}
 	private void initializeDatatable()
 	{
 		String datatablePath = frameworkParameters.getRelativePath() +
@@ -334,7 +347,7 @@ public class DriverScript
 	
 	private void initializeTestScript()
 	{
-		scriptHelper = new ScriptHelper(dataTable, report, driver);
+		scriptHelper = new ScriptHelper(dataTable, report, driver, variable);
 		
 		businessFlowData = getBusinessFlow();
 	}

@@ -118,6 +118,41 @@ public class SeleniumTestParameters extends TestParameters
 		this.description = description;
 	}
 	
+	private String emailClient;
+	/**
+	 * Function to get the emailClient for a specific test
+	 * @return String
+	 */
+	public String getEmailClient()
+	{
+		return emailClient;
+	}
+	/**
+	 * Function to set the emailClient for a specific test
+	 */
+	public void setEmailClient(String emailClient)
+	{
+		this.emailClient = emailClient;
+	}
+	
+	
+	private String orientation;
+	/**
+	 * Function to get the orientation for a specific test
+	 * @return String
+	 */
+	public String getOrientation()
+	{
+		return orientation;
+	}
+	/**
+	 * Function to set the orientation for a specific test
+	 */
+	public void setOrientation(String orientation)
+	{
+		this.orientation = orientation;
+	}
+	
 	
 	
 	

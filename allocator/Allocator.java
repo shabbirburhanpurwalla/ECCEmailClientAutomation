@@ -109,6 +109,20 @@ public class Allocator extends ResultSummaryManager
 					testParameters.setDescription(description);
 				}
 				
+				String emailClient = runManagerAccess.getValue(currentTestInstance, "EmailClient");
+				if (!emailClient.equals("")) {
+					testParameters.setEmailClient(emailClient);
+				} else {
+					testParameters.setEmailClient("Default");
+				}
+				
+				String orientation = runManagerAccess.getValue(currentTestInstance, "Orientation");
+				if (!emailClient.equals("")) {
+					testParameters.setOrientation(orientation);
+				} else {
+					testParameters.setOrientation("Portrait");
+				}
+				
 				testInstancesToRun.add(testParameters);
 			}
 		}
