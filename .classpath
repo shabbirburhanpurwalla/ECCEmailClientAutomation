@@ -2,14 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/Framework_Core.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/Framework_DataTable.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/Framework_Reporting.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/Framework_Utilities.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/ojdbc14_g.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/workspace1/FPL_ECC_Mobile/supportlibraries/poi-3.8-20120326.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/Downloads/Appium/java-client-1.5.0.jar" sourcepath="C:/Users/387478/Downloads/Appium/java-client-1.5.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/387478/Downloads/Appium/java-client-1.5.0-sources.jar"/>
-	<classpathentry kind="lib" path="D:/Shabbir/Softwares/selenium-server-standalone-2.44.0.jar"/>
+	<classpathentry kind="lib" path="libs/selenium-server-standalone-2.44.0.jar"/>
+	<classpathentry kind="lib" path="supportlibraries/poi-3.8-20120326.jar"/>
+	<classpathentry kind="lib" path="libs/java-client-1.5.0-sources.jar"/>
+	<classpathentry kind="lib" path="libs/java-client-1.5.0.jar"/>
+	<classpathentry kind="lib" path="supportlibraries/Framework_Core.jar"/>
+	<classpathentry kind="lib" path="supportlibraries/Framework_DataTable.jar"/>
+	<classpathentry kind="lib" path="supportlibraries/Framework_Reporting.jar"/>
+	<classpathentry kind="lib" path="supportlibraries/Framework_Utilities.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
