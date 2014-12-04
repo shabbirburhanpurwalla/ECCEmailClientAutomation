@@ -190,8 +190,13 @@ public class EMBNEmail extends ReusableLibrary{
 			String abpDate = commonFunction.getData("Accounts", "ABPWithdrawalDate","ABP Withdrawal Date", true);
 			String bankAccountNumber = commonFunction.getData("Accounts", "BankAccountNumber","Bank Account Number", true);
 			abpDate = commonFunction.convertDatetoSingleDigit(abpDate);
-			String abpMessage = "The amount due on your account will be drafted automatically from your bank account ending in" + bankAccountNumber +" on or after "+ abpDate +". If a partial payment is received before this date, only the remaining balance on your account will be drafted automatically.";
-			System.out.println(abpMessage);
+			
+			String abpMessage="";
+			//System.out.println(abpMessage);
+			if(variables.getEmailClient().equalsIgnoreCase("aquamail"))
+				abpMessage = "The amount due on your account will be drafted automatically from your bank account ending in" + bankAccountNumber +" on or after "+ abpDate +". If a partial payment is received before this date, only the remaining balance on your account will be drafted automatically.";
+			else if(variables.getEmailClient().equalsIgnoreCase("aol"))
+				abpMessage = "The amount due on your account will be drafted automatically from your bank account ending in" + bankAccountNumber +" on or after "+ abpDate +". If a partial payment is received before this date, only the remaining balance on your account will be drafted automatically.";
 			commonFunction.verifyIfElementIsPresent("NAME", abpMessage, "ABP Message");
 		}
 		
