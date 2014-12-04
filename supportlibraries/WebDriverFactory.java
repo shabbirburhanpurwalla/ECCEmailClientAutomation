@@ -228,23 +228,24 @@ public class WebDriverFactory
         
         if(emailClient.toLowerCase().equals("aol")){
         	capabilities.setCapability("appPackage","com.aol.mobile.aolapp");        
-            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        	capabilities.setCapability("appActivity", "com.aol.mobile.aolapp.ui.activity.SplashScreenActivity");
         }else if(emailClient.toLowerCase().equals("gmail")){
         	capabilities.setCapability("appPackage","com.google.android.gm");        
-            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        	capabilities.setCapability("appActivity", ".ui.MailActivityGmail");
         }else if(emailClient.toLowerCase().equals("outlook")){
-        	capabilities.setCapability("appPackage","com.outlook.Z7");        
-        	
-            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        	capabilities.setCapability("appPackage","com.outlook.Z7");   
+        	//capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
         }else if(emailClient.toLowerCase().equals("yahoo")){
         	capabilities.setCapability("appPackage","com.yahoo.mobile.client.android.mail");        
-            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
+        	capabilities.setCapability("appActivity", "com.yahoo.mobile.client.android.mail.activity.MainActivity");
+        }else if(emailClient.toLowerCase().equals("aquamail")){
+        	capabilities.setCapability("appPackage","org.kman.AquaMail");        
+        	capabilities.setCapability("appActivity", "org.kman.AquaMail.ui.AccountListActivity");
         }else{
         	capabilities.setCapability("appPackage","com.android.email");        
-            capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
-            
+        	capabilities.setCapability("appActivity", "com.android.email.activity.Welcome");
         }
-        
+
         //Email App
         //capabilities.setCapability("appActivity", "com.android.email.activity.setup.AccountSetupBasics");
         

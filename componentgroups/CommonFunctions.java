@@ -68,6 +68,8 @@ import supportlibraries.WebDriverFactory;
 import com.cognizant.framework.FrameworkException;
 import com.cognizant.framework.Status;
 import com.thoughtworks.selenium.Wait;
+import com.thoughtworks.selenium.webdriven.commands.Highlight;
+
 import bsh.ParseException;
 //import com.thoughtworks.selenium.webdriven.WebDriverBackedSelenium;
 
@@ -243,12 +245,13 @@ public class CommonFunctions extends ReusableLibrary{
 	 *         
 	 * @return false 
 	 *   	   If the element does not exist on page
+	 * @throws InterruptedException 
 	 *   
 	 * @modifiedby 387478 on 11 Nov
 	 *         Added elemToFind.isDisplayed() condition
 	 ************************************************************* 
 	 */
-	public boolean verifyIfElementIsPresent(String strFindElementType, String strObjectProperty, String objName){
+	public boolean verifyIfElementIsPresent(String strFindElementType, String strObjectProperty, String objName) throws InterruptedException{
 		WebElement elemToFind;
 		try{	    	
 				
@@ -272,14 +275,19 @@ public class CommonFunctions extends ReusableLibrary{
 						elemToFind = null;
 				
 		    } catch(Exception e){
-		    	report.updateTestLog(objName, objName+" element is not displayed", Status.FAIL);
+		    	report.updateTestLog(objName, objName+" element is not displayed or contains incorrect data.", Status.FAIL);
 		        return false;
 		    }
 		    if(elemToFind == null || (!elemToFind.isDisplayed())){
-		    	report.updateTestLog(objName, objName+" element is not displayed", Status.FAIL);
+		    	
+		    	report.updateTestLog(objName, objName+" element is not displayed or contains incorrect data.", Status.FAIL);
 		    	return false;
 		    }
-		    report.updateTestLog(objName, objName+" is displayed", Status.PASS);	
+		    if(objName.toLowerCase().contains("link")){
+		    	report.updateTestLog(objName, objName+" is displayed.", Status.PASS);
+		    	}
+		    else
+		    	report.updateTestLog(objName, objName+" is displayed and verified.", Status.PASS);
 			return true;
 	}
 	
@@ -320,6 +328,8 @@ public class CommonFunctions extends ReusableLibrary{
 		}catch(Exception e){
 			if(displayError)
 				report.updateTestLog(objName, "Unable to retrieve data", Status.WARNING);
+			
+			System.out.println(e.getMessage());
 		}
 		return retrievedData;
 	}
@@ -531,6 +541,8 @@ public class CommonFunctions extends ReusableLibrary{
                               return false;
                         }           
       }
+      
+      
       
       /**
        ************************************************************* 
@@ -2394,8 +2406,6 @@ public class CommonFunctions extends ReusableLibrary{
 			long elapsedTime = stopTime - startTime;
 			return true;
 		} catch(Exception e){
-			report.updateTestLog("Wait for all elements to load", "All elements not loaded. Waited for " + time + " seconds. Continuing execution.", Status.WARNING);
-			report.updateTestLog("Take Screenshot", "Screenshot taken successfully", Status.SCREENSHOT);
 			return false;
 		}
 	}

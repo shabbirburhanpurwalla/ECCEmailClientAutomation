@@ -11,7 +11,14 @@ import static pageobjects.ObjectLocator.*;
  */
 public enum PageObjects {
 	
-	lbl_LastUpdated("com.android.email:id/last_sync_time",ID,"Email Client");
+	lbl_DefaultLastUpdated("com.android.email:id/last_sync_time",ID,"Email Client"),
+	lbl_AOL_InboxText("com.aol.mobile.aolapp:id/action_bar_spinner_item_text",ID,"Inbox Text"),
+	lbl_Yahoo_InboxText("com.yahoo.mobile.client.android.mail:id/titleText",ID,"Inbox Text"),
+	lbl_Gmail_PrimaryTitle("android:id/action_bar_title",ID,"Primary Text"),
+	lbl_AquaMail_InboxTitle("org.kman.AquaMail:id/account_folder_name_folder",ID,"Inbox Text"),
+	lbl_AquaMail_EmailSubject("org.kman.AquaMail:id/message_subject_short",ID,"Email Subject"),
+	lbl_AOL_EmailSubject("com.aol.mobile.aolapp:id/message_subject",ID,"Email Subject");
+	//
 	
 	
 	String strProperty = "";
