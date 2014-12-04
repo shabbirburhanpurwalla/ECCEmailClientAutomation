@@ -114,6 +114,8 @@ public class FunctionalComponents extends ReusableLibrary
 	}
 	
 	public void searchEmailAol(){
-		
+		List<WebElement> emailList = driver.findElementsById("com.android.email:id/item_container");
+		int emailCount = emailList.size();
+		System.out.print(emailCount-1 +" emails found");
 	}
 }
